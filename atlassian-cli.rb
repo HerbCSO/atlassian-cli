@@ -15,6 +15,7 @@ class AtlassianCli < Formula
 
   def install
     inreplace "acli.sh" do |s|
+      s.sub! "`find \"$directory/lib\" -name acli-*.jar`", "'#{share}/lib/acli-#{version}.jar'"
       s.sub! "java", "'#{Formula["openjdk"].opt_bin}/java'"
     end
     bin.install "acli.sh" => "acli"
